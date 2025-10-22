@@ -3,6 +3,10 @@ Library    SeleniumLibrary    run_on_failure=NOTHING
 Resource    ../geral-resource.robot
 Resource    ../env/11-env.robot
 
+*** Variables ***
+${URL_CRIAR_TOKEN}    http://proxyvip.funcional.local:30300/tokens/create
+${URL_TESTAR_TOKEN}    https://beneficiario.funcionalhealthtech.com.br/?token=
+
 *** Keywords ***
 Acessar JWT Generator
     ${ok}=    Run Keyword And Return Status    Open Browser    ${URL_CRIAR_TOKEN}    ${BROWSER}    options=${OPTIONS}
@@ -16,10 +20,14 @@ Inserir código de cartão
         Fail    ❌ Campo de código do cartão não encontrado
     END
 
+    Set Log Level    NONE
+
     ${ok}=    Run Keyword And Return Status    Input Text    css=input[name='profileIdentity']    ${COD_CARTAO}
     IF    not ${ok}
         Fail    ❌ Erro ao inserir código do cartão
     END
+
+    Set Log Level    INFO
 
 Clicar em Gerar Token
     ${ok}=    Run Keyword And Return Status    Click Button    css=button[class="button is-primary"]

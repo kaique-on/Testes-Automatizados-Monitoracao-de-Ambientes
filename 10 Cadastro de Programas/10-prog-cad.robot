@@ -13,11 +13,11 @@ ${URL}       https://portaloperacoes.funcionalcorp.net.br/Programa
 Validar Datas de Cadastros Recentes
     ${ok}=    Run Keyword And Return Status    Open Browser    ${URL}    ${BROWSER}    options=${OPTIONS}
     IF    not ${ok}
-        Fail    ❗❗ Erro ao abrir o navegador ou acessar a URL
+        Fail    ❗ Erro ao abrir o navegador ou acessar a URL
     END
     ${ok}=    Run Keyword And Return Status    Wait Until Page Contains Element    xpath=//table/tbody/tr    10s
     IF    not ${ok}
-        Fail   ❗❗ A tabela de cadastros não foi encontrada na página
+        Fail   ❗ A tabela de cadastros não foi encontrada na página
     END
     ${linhas}=    Get Element Count    xpath=//table/tbody/tr
     ${hoje}=    Get Current Date    result_format=%Y-%m-%d

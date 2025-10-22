@@ -12,7 +12,9 @@ Suite Teardown    Mostrar Duracao
 
 Autorizador Geral
     Abrir Navegador
+    Set Log Level    NONE
     Go To    ${URL_GERAL}
+    Set Log Level    INFO
     Log To Console    .
     TRY
         Login Autorizador Geral
@@ -40,7 +42,9 @@ Autorizador Geral
     
 Autorizador Raiadrogasil
     Abrir Navegador
+    Set Log Level    NONE
     Go To    ${URL_RAIADROGASIL}
+    Set Log Level    INFO
     Log To Console    .
     TRY
         Login Autorizador Raiadrogasil
@@ -68,7 +72,9 @@ Autorizador Raiadrogasil
     
 Autorizador Panvel
     Abrir Navegador
+    Set Log Level    NONE
     Go To    ${URL_PANVEL}
+    Set Log Level    INFO
     Log To Console    .
     TRY
         Login Autorizador Panvel

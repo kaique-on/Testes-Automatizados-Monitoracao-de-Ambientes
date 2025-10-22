@@ -15,11 +15,12 @@ cd /d "%~dp0"
 del /q output.xml log.html report.html 2>nul
 
 echo Executando testes COM INTERFACE (UI)...
+echo Pasta atual: %CD%
 echo.
 
 :: Executa todos os .robot da pasta atual
 robot --output NONE --log NONE --report NONE . 
 
 echo.
-echo ✅ Testes com interface visível finalizados com sucesso.
+echo ✅ Testes com interface visível finalizados.
 pause
