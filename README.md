@@ -4,6 +4,7 @@ Este repositório contém uma suíte de testes automatizados desenvolvida em **R
 
 O objetivo é permitir que **monitores da equipe** executem testes complexos de forma **simples, rápida e segura**, sem precisar alterar código.
 
+
 ---
 
 ## 🚀 Objetivo do Projeto
@@ -14,6 +15,7 @@ Esses testes automatizados foram criados para:
 * Verificar **fluxos críticos**, como login, geração de token JWT, validação de páginas e consultas de sistemas.
 * Simplificar a rotina dos monitores, permitindo **execução via cliques** em arquivos `.bat`.
 * Manter **segurança e privacidade**, evitando exposição de dados sensíveis no repositório público.
+
 
 ---
 
@@ -36,6 +38,7 @@ Esses testes automatizados foram criados para:
 
    Para exibir emojis (✅ ❌) corretamente no console, instale o *Windows Terminal* pela Microsoft Store.
    Caso não esteja instalado, os testes funcionarão normalmente — apenas sem ícones gráficos.
+
 
 ---
 
@@ -65,6 +68,7 @@ Durante a execução, o terminal mostrará:
 ❗ Indica o motivo da falha (ex: ❗ Falha ao clicar em botão "Login")
 ```
 
+
 ---
 
 ## 🛡️ Segurança e Privacidade
@@ -73,13 +77,6 @@ Durante a execução, o terminal mostrará:
 * As credenciais permanecem **somente em arquivos locais** (`env/*.robot`).
 * Os monitores **não precisam alterar variáveis ou código** — tudo é automatizado via scripts `.bat`.
 
----
-
-## 👨‍💻 Autor
-
-**Kaique Nascimento de Oliveira**
-Aprendiz de tecnologia com foco em desenvolvimento e automação de testes.
-Atualmente atuando na área de **Monitoria e Operações** na **Funcional Health Tech**.
 
 ---
 
@@ -102,6 +99,7 @@ O repositório está organizado de forma a separar testes, recursos e variáveis
  ┣ 📜 README.md
 ```
 
+
 ---
 
 ## 🧭 Fluxo de Uso
@@ -110,6 +108,7 @@ O repositório está organizado de forma a separar testes, recursos e variáveis
 2. Escolha o modo de execução (`ui-test.bat` ou `headless-test.bat`).
 3. Aguarde o resultado no terminal.
 4. Consulte os logs visuais no próprio console.
+
 
 ---
 
@@ -121,4 +120,11 @@ O repositório está organizado de forma a separar testes, recursos e variáveis
 * **Batch Scripts (.bat)**
 * **Windows Terminal**
 
+
 ---
+
+## 👨‍💻 Autor
+
+**Kaique Nascimento de Oliveira**
+Aprendiz de tecnologia com foco em desenvolvimento e automação de testes.
+Atualmente atuando na área de **Monitoria e Operações** na **Funcional Health Tech**.
