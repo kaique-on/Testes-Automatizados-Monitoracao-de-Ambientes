@@ -21,5 +21,5 @@ echo.
 robot --output NONE --log NONE --report NONE . 
 
 echo.
-echo ✅ Testes com interface visível finalizados com sucesso.
+echo Testes com interface visivel finalizados com sucesso.
 pause

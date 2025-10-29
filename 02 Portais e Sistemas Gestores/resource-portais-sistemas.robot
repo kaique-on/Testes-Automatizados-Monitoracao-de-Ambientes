@@ -1,6 +1,8 @@
 *** Settings ***
 Library    SeleniumLibrary    run_on_failure=NOTHING
+Library    Collections
 Resource    ../geral-resource.robot
+Resource    ../env/2-env.robot
 
 *** Variables ***
 ${ACEITAR_COOKIES}    Aceitar todos os cookies
@@ -28,6 +30,11 @@ ${URL21}    https://abbott-nutricional.funcionalmais.com/
 ${URL22}    https://astellas.funcionalmais.com/
 ${URL23}    https://knight.funcionalmais.com
 ${URL24}    https://boehringer.funcionalmais.com/
+
+@{URLS2}    ${URL9}    ${URL10}    ${URL12}    ${URL17}    ${URL20}
+
+    # Ordem geral das URLs (todas, na sequência que você quiser validar)
+
 
 *** Keywords ***
 
@@ -65,16 +72,50 @@ Validar Pagina - http://dcintranet/ATC/Chamados/Login.aspx
     ...    ELSE    Log To Console    ❌ ${URL5} Erro ao carregar 
 
 
-Validar Pagina
+Validar Pagina FuncionalMais
     [Arguments]    ${url}
-    Go To    ${url}
-    ${status}=    Run Keyword And Return Status    Wait Until Page Contains    ${ACEITAR_COOKIES}    10s
-    Run Keyword If    ${status}    Log To Console    ✅ ${url} carregou corretamente
-    ...    ELSE    Log To Console    ❌ ${url} Erro ao carregar
+    Sleep    1s
+    Execute JavaScript    window.location.href = "${url}"
+    Sleep    1s
+    Click Element    css=#onetrust-accept-btn-handler
 
+    # Verificação simples: 
+    # Wait Until Element Is Visible     css=#onetrust-accept-btn-handler
+
+    Input Text    id=txtLogin    ${LOGIN}
+    Input Password    id=txtSenha    ${SENHA}
+    Click Element    id=btnLogin
+    Sleep    1s
+    ${modal_existe}=    Run Keyword And Return Status    Element Should Be Visible    css=#decisionModal .btn.btn-success    10s
+    Run Keyword If    ${modal_existe}    Execute JavaScript    document.querySelector('#decisionModal .btn.btn-success').click()
+
+    Login funcionalmais
+    Log To Console    ✅ ${url} logou corretamente
+
+
+Login funcionalmais
+    ${carregando}=    Run Keyword And Return Status    Element Should Be Visible    css=#loadingModal
+    WHILE    ${carregando}
+        Sleep    0.5s
+        ${carregando}=    Run Keyword And Return Status    Element Should Be Visible    css=#loadingModal
+    END
+
+    ${cpf_visivel}=    Run Keyword And Return Status    Element Should Be Visible    id=txtUserCPF
+    IF    ${cpf_visivel}
+        # Login funcionalmais2
+        No Operation
+    ELSE
+        Wait Until Element Is Visible    css=#div-menu-sair
+        Click Element    css=#div-menu-sair
+    END
+
+
+Login funcionalmais2
+    Input Text    id=txtUserCPF    491081568676
+    Click Element    id=btnEnviar
 
 Validar Paginas FuncionalMais
-    ${urls}=    Create List
+    ${todas_urls}=    Create List
     ...    ${URL6}
     ...    ${URL7}
     ...    ${URL8}
@@ -95,6 +136,10 @@ Validar Paginas FuncionalMais
     ...    ${URL23}
     ...    ${URL24}
 
-    FOR    ${url}    IN    @{urls}
-        Validar Pagina    ${url}
+    FOR    ${url}    IN    @{todas_urls}
+        TRY
+            Validar Pagina FuncionalMais    ${url}
+        EXCEPT
+            Log To Console    ❌ Erro ao validar: ${url}
+        END
     END

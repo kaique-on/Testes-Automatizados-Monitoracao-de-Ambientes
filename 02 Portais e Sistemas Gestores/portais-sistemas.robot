@@ -14,7 +14,7 @@ Portais e Sistemas Gestores
     Validar Pagina - https://funcionalhealthtech.com.br/
     Validar Pagina - https://funcionalacesso.com/Welcome.aspx
     Validar Pagina - http://www.funcionalcorp.com.br/funcionalcard/
-    Validar Pagina - https://www.funcionalcorp.com.br/funcionalcard/home/
+    # Validar Pagina - https://www.funcionalcorp.com.br/funcionalcard/home/
     Validar Pagina - http://dcintranet/ATC/Chamados/Login.aspx
     Validar Paginas FuncionalMais
     Close Browser

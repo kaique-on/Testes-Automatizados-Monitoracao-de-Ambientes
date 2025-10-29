@@ -11,6 +11,7 @@ ${URL}       https://portaloperacoes.funcionalcorp.net.br/Programa
 
 *** Test Cases ***
 Validar Datas de Cadastros Recentes
+    Log To Console    Link: ${URL}
     ${ok}=    Run Keyword And Return Status    Open Browser    ${URL}    ${BROWSER}    options=${OPTIONS}
     IF    not ${ok}
         Fail    ❗ Erro ao abrir o navegador ou acessar a URL
