@@ -1,0 +1,17 @@
+--suite Robot.03 Autorizadores.3-Autorizadores
+--variable OPTIONS:add_argument("--headless");
+--variable CALLER_ID:7a3d6150ddc54c63ab97a02082f57235
+--variable PABOTLIBURI:127.0.0.1:8270
+--variable PABOTEXECUTIONPOOLID:3
+--variable PABOTISLASTEXECUTIONINPOOL:0
+--variable PABOTNUMBEROFPROCESSES:4
+--variable PABOTQUEUEINDEX:1
+--variable PABOTLASTLEVEL:Robot.03 Autorizadores
+--outputdir results\pabot_results\1
+--listener RobotStackTracer
+--consolecolors off
+--log NONE
+--report NONE
+--xunit NONE
+--consolemarkers off
+.

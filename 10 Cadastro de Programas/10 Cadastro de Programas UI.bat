@@ -1,4 +1,5 @@
 @echo off
+chcp 65001 >nul
 if not defined WT_SESSION (
     start wt.exe -w 0 -p "Windows PowerShell" cmd /c "%~f0"
     exit /b
@@ -6,7 +7,7 @@ if not defined WT_SESSION (
 
 :: Define título e cor
 title Testes UI
-color 0A
+color 0F
 
 :: Vai para a pasta onde o script está
 cd /d "%~dp0"
@@ -18,7 +19,7 @@ echo Executando testes COM INTERFACE (UI)...
 echo.
 
 :: Executa todos os .robot da pasta atual
-robot --output NONE --log NONE --report NONE . 
+robot --console NONE --output NONE --log NONE --report NONE . 
 
 echo.
 echo ✅ Testes com interface visível finalizados com sucesso.

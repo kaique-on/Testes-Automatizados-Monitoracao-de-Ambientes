@@ -2,6 +2,7 @@
 Library    SeleniumLibrary
 Resource    ../geral-resource.robot
 Resource    ../env/8-env.robot
+Resource    ../logs_utils.robot
 
 *** Variables ***
 ${URL}    http://funcionalplant.funcional.local/
@@ -15,7 +16,7 @@ Executar com verificacao
     END
 
 Acessar funcionalplant
-    Executar com verificacao    Open Browser    Falha ao abrir navegador ou acessar ${URL}    ${URL}    ${BROWSER}
+    Open Browser    ${URL}    ${URL}    ${BROWSER}    options=${OPTIONS}
     Executar com verificacao    Wait Until Element Is Visible    Campo de login não encontrado na página inicial    id=login    10s
     Log To Console    ✅ Funcionalplant carregado com sucesso
 
@@ -30,7 +31,8 @@ Login funcionalplant
 
 *** Test Cases ***
 Acesso e Login em funcionalplant
-    Log To Console    .
+    Log To Shared File    Executando teste: 8 - Acesso ao Funcionalplant
+    Log To Shared File    Link: ${URL}\n
     Acessar funcionalplant
     Login funcionalplant
     [Teardown]    Close Browser

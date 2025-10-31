@@ -3,6 +3,7 @@ Library    SeleniumLibrary    run_on_failure=NOTHING
 Library    Collections
 Resource    ../geral-resource.robot
 Resource    ../env/2-env.robot
+Resource    ../logs_utils.robot
 
 *** Variables ***
 ${ACEITAR_COOKIES}    Aceitar todos os cookies
@@ -40,36 +41,35 @@ ${URL24}    https://boehringer.funcionalmais.com/
 
 Abrir Navegador
     Open Browser    about:blank    chrome    options=${OPTIONS}
-    Log To Console    .
 Validar Pagina - https://funcionalhealthtech.com.br/
     Go To    ${URL1}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains    ${ACEITAR_COOKIES}    10s
-    Run Keyword If    ${status}    Log To Console    ✅ ${URL1} carregou corretamente
-    ...    ELSE    Log To Console    ❌ ${URL1} Erro ao carregar 
+    Run Keyword If    ${status}    Log To Shared File    ✅ ${URL1} carregou corretamente
+    ...    ELSE    Log To Shared File    ❌ ${URL1} Erro ao carregar 
 
 Validar Pagina - https://funcionalacesso.com/Welcome.aspx
     Go To    ${URL2}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains    ${ACEITAR_COOKIES}    10s
-    Run Keyword If    ${status}    Log To Console    ✅ ${URL2} carregou corretamente
-    ...    ELSE    Log To Console    ❌ ${URL2} Erro ao carregar 
+    Run Keyword If    ${status}    Log To Shared File    ✅ ${URL2} carregou corretamente
+    ...    ELSE    Log To Shared File    ❌ ${URL2} Erro ao carregar 
 
 Validar Pagina - http://www.funcionalcorp.com.br/funcionalcard/
     Go To    ${URL3}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains    todos    10s
-    Run Keyword If    ${status}    Log To Console    ✅ ${URL3} carregou corretamente
-    ...    ELSE    Log To Console    ❌ ${URL3} Erro ao carregar 
+    Run Keyword If    ${status}    Log To Shared File    ✅ ${URL3} carregou corretamente
+    ...    ELSE    Log To Shared File    ❌ ${URL3} Erro ao carregar 
 
 Validar Pagina - https://www.funcionalcorp.com.br/funcionalcard/home/
     Go To    ${URL4}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains    faça seu login    10s
-    Run Keyword If    ${status}    Log To Console    ✅ ${URL4} carregou corretamente
-    ...    ELSE    Log To Console    ❌ ${URL4} Erro ao carregar 
+    Run Keyword If    ${status}    Log To Shared File    ✅ ${URL4} carregou corretamente
+    ...    ELSE    Log To Shared File    ❌ ${URL4} Erro ao carregar 
 
 Validar Pagina - http://dcintranet/ATC/Chamados/Login.aspx
     Go To    ${URL5}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains    Digite os carateres da imagem    10s
-    Run Keyword If    ${status}    Log To Console    ✅ ${URL5} carregou corretamente
-    ...    ELSE    Log To Console    ❌ ${URL5} Erro ao carregar 
+    Run Keyword If    ${status}    Log To Shared File    ✅ ${URL5} carregou corretamente
+    ...    ELSE    Log To Shared File    ❌ ${URL5} Erro ao carregar 
 
 
 Validar Pagina FuncionalMais
@@ -90,7 +90,7 @@ Validar Pagina FuncionalMais
     Run Keyword If    ${modal_existe}    Execute JavaScript    document.querySelector('#decisionModal .btn.btn-success').click()
 
     Login funcionalmais
-    Log To Console    ✅ ${url} logou corretamente
+    Log To Shared File    ✅ ${url} logou corretamente
 
 
 Login funcionalmais
@@ -140,6 +140,6 @@ Validar Paginas FuncionalMais
         TRY
             Validar Pagina FuncionalMais    ${url}
         EXCEPT
-            Log To Console    ❌ Erro ao validar: ${url}
+            Log To Shared File    ❌ Erro ao validar: ${url}
         END
     END
