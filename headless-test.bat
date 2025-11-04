@@ -8,7 +8,8 @@ if not defined WT_SESSION (
 
 title Testes Headless
 color 0E
-cd /d "C:\Users\kaique.oliveira\Documents\Codigos\robot"
+set "BASE_DIR=%~dp0"
+cd /d "%BASE_DIR%"
 
 del /q output.xml log.html report.html 2>nul
 

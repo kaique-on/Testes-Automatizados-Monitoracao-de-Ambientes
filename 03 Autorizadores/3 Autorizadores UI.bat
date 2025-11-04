@@ -21,6 +21,6 @@ echo.
 :: Executa todos os .robot da pasta atual
 robot --console NONE --output NONE --log NONE --report NONE . 
 
-echo.
 echo ✅ Testes com interface visível finalizados com sucesso.
+echo.
 pause

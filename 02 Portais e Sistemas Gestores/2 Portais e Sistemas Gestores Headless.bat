@@ -24,5 +24,5 @@ robot --console NONE --output NONE --log NONE --report NONE -v OPTIONS:"add_argu
 :: ===========================================================
 echo.
 echo Testes headless finalizados com sucesso.
-echo ===========================================================
+echo.
 pause

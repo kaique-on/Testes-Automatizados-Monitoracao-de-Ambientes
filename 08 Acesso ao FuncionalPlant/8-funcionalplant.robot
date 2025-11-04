@@ -18,7 +18,7 @@ Executar com verificacao
 Acessar funcionalplant
     Open Browser    ${URL}    ${URL}    ${BROWSER}    options=${OPTIONS}
     Executar com verificacao    Wait Until Element Is Visible    Campo de login não encontrado na página inicial    id=login    10s
-    Log To Console    ✅ Funcionalplant carregado com sucesso
+    Log To Shared File    ✅ Funcionalplant carregado com sucesso
 
 Login funcionalplant
     Set Log Level    NONE
@@ -27,7 +27,7 @@ Login funcionalplant
     Set Log Level    INFO
     Executar com verificacao    Click Element    Erro ao clicar no botão de login    xpath=//input[@type='submit' and @value='OK']
     Executar com verificacao    Wait Until Page Contains    Login falhou — mensagem de boas-vindas não encontrada    Bem vindo ao sistema,    10s
-    Log To Console    ✅ Logado em Funcionalplant com sucesso
+    Log To Shared File    ✅ Logado em Funcionalplant com sucesso
 
 *** Test Cases ***
 Acesso e Login em funcionalplant

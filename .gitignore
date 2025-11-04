@@ -1,3 +1,4 @@
 # ignorar o upload dessas pastas ao git:
 env/
 .vscode
+results/

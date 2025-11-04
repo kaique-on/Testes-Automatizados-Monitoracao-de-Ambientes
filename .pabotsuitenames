@@ -1,7 +1,7 @@
-datasources:7ab60202413240657ea9cdcde71e2915052ad7b1
+datasources:b19f1e711872b8c0989a51f15f79077d02d93352
 commandlineoptions:588b38018620b78224fe989117a76b8b118f045f
 suitesfrom:no-suites-from-option
-file:fe9a40a80228eec9f7593684ffd9f29a1ed5e44f
+file:743e04547bdd69b3e1a4b883ec598b1a851d8068
 --suite Robot.02 Portais e Sistemas Gestores.Portais-Sistemas
 --suite Robot.03 Autorizadores.3-Autorizadores
 --suite Robot.08 Acesso ao FuncionalPlant.8-Funcionalplant

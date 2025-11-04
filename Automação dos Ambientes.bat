@@ -1,8 +1,4 @@
 @echo off
-:: =====================================================
-:: MONITORAÇÃO DE AMBIENTES AUTOMATIZADOS - MENU PRINCIPAL
-:: =====================================================
-
 if not defined WT_SESSION (
     start wt.exe -w 0 -p "Windows PowerShell" cmd /c "%~f0"
     exit /b
@@ -11,6 +7,8 @@ if not defined WT_SESSION (
 title Monitoração de Ambientes Automatizados
 color 0F
 chcp 65001 >nul
+
+set "BASE_DIR=%~dp0"
 
 :MENU
 cls
@@ -22,7 +20,7 @@ echo Como você gostaria de executar os testes?
 echo.
 echo   [1] Executar todos visualmente (UI)
 echo   [2] Executar todos em segundo plano (Headless)
-echo   [3] Executar todos simultaneamente (Pabot)
+echo   [3] Executar todos simultaneamente (Headless)
 echo   [4] Executar teste específico visualmente (UI)
 echo   [5] Executar teste específico em segundo plano (Headless)
 echo.
@@ -45,7 +43,7 @@ goto :MENU
 cls
 echo Executando TODOS os testes VISUALMENTE...
 echo.
-call "C:\Users\kaique.oliveira\Documents\Codigos\robot\ui-test.bat"
+call "%BASE_DIR%ui-test.bat"
 pause
 goto :MENU
 
@@ -54,7 +52,7 @@ goto :MENU
 cls
 echo Executando TODOS os testes em MODO HEADLESS...
 echo.
-call "C:\Users\kaique.oliveira\Documents\Codigos\robot\headless-test.bat"
+call "%BASE_DIR%headless-test.bat"
 pause
 goto :MENU
 
@@ -63,10 +61,15 @@ goto :MENU
 cls
 echo Executando TODOS os testes simultaneamente (Pabot Headless)...
 echo.
-call "C:\Users\kaique.oliveira\Documents\Codigos\robot\testes simultaneos UI.bat"
+call "%BASE_DIR%testes simultaneos headless.bat"
 pause
 goto :MENU
 
+:SAIR
+cls
+echo Encerrando a monitoração de ambientes...
+timeout /t 1 >nul
+exit /b
 
 :UI_ESPECIFICO
 cls
@@ -82,16 +85,14 @@ echo.
 set /p teste=Digite o número do teste desejado: 
 echo.
 
-if "%teste%"=="1" call "C:\Users\kaique.oliveira\Documents\Codigos\robot\02 Portais e Sistemas Gestores\2 Portais e Sistemas Gestores UI.bat"
-if "%teste%"=="2" call "C:\Users\kaique.oliveira\Documents\Codigos\robot\03 Autorizadores\3 Autorizadores Funcionalcard UI.bat"
-if "%teste%"=="3" call "C:\Users\kaique.oliveira\Documents\Codigos\robot\08 Acesso ao FuncionalPlant\8 Acesso ao Funcionalplant UI.bat"
-if "%teste%"=="4" call "C:\Users\kaique.oliveira\Documents\Codigos\robot\10 Cadastro de Programas\10 Cadastro de Programas UI.bat"
-if "%teste%"=="5" call "C:\Users\kaique.oliveira\Documents\Codigos\robot\11 Webview\11 Webview UI.bat"
+
+
+if "%teste%"=="1" call "%BASE_DIR%02 Portais e Sistemas Gestores\2 Portais e Sistemas Gestores UI.bat"
+if "%teste%"=="2" call "%BASE_DIR%03 Autorizadores\3 Autorizadores Funcionalcard UI.bat"
+if "%teste%"=="3" call "%BASE_DIR%08 Acesso ao FuncionalPlant\8 Acesso ao Funcionalplant UI.bat"
+if "%teste%"=="4" call "%BASE_DIR%10 Cadastro de Programas\10 Cadastro de Programas UI.bat"
+if "%teste%"=="5" call "%BASE_DIR%11 Webview\11 Webview UI.bat"
 if "%teste%"=="0" goto :MENU
-
-pause
-goto :MENU
-
 
 :HEADLESS_ESPECIFICO
 cls
@@ -107,18 +108,12 @@ echo.
 set /p teste=Digite o número do teste desejado: 
 echo.
 
-if "%teste%"=="1" call "C:\Users\kaique.oliveira\Documents\Codigos\robot\02 Portais e Sistemas Gestores\2 Portais e Sistemas Gestores Headless.bat"
-if "%teste%"=="2" call "C:\Users\kaique.oliveira\Documents\Codigos\robot\03 Autorizadores\3 Autorizadores Funcionalcard Headless.bat"
-if "%teste%"=="3" call "C:\Users\kaique.oliveira\Documents\Codigos\robot\08 Acesso ao FuncionalPlant\8 Acesso ao Funcionalplant Headless.bat"
-if "%teste%"=="4" call "C:\Users\kaique.oliveira\Documents\Codigos\robot\10 Cadastro de Programas\10 Cadastro de Programas Headless.bat"
-if "%teste%"=="5" call "C:\Users\kaique.oliveira\Documents\Codigos\robot\11 Webview\11 Webview Headless.bat"
+if "%teste%"=="1" call "%BASE_DIR%02 Portais e Sistemas Gestores\2 Portais e Sistemas Gestores headless.bat"
+if "%teste%"=="2" call "%BASE_DIR%03 Autorizadores\3 Autorizadores Funcionalcard headless.bat"
+if "%teste%"=="3" call "%BASE_DIR%08 Acesso ao FuncionalPlant\8 Acesso ao Funcionalplant headless.bat"
+if "%teste%"=="4" call "%BASE_DIR%10 Cadastro de Programas\10 Cadastro de Programas headless.bat"
+if "%teste%"=="5" call "%BASE_DIR%11 Webview\11 Webview headless.bat"
 if "%teste%"=="0" goto :MENU
 
 pause
 goto :MENU
-
-
-:SAIR
-echo Encerrando...
-timeout /t 1 >nul
-exit /b

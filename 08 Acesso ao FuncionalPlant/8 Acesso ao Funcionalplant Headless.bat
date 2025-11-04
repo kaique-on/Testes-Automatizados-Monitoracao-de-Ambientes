@@ -21,8 +21,6 @@ echo.
 
 robot --console NONE --output NONE --log NONE --report NONE -v OPTIONS:"add_argument(\"--headless\");" .
 
-:: ===========================================================
+echo ✅ Teste headless finalizados com sucesso.
 echo.
-echo ✅ Testes headless finalizados com sucesso.
-echo ===========================================================
 pause
