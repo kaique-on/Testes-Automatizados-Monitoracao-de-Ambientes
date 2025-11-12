@@ -121,19 +121,15 @@ Como você gostaria de executar os testes?
 
 ### 🔹 Opções disponíveis:
 
-* **[1] Executar todos visualmente (UI)**
+**[1] Executar todos visualmente (UI)**
   → Abre o navegador e executa todos os testes com interface.
-
-* **[2] Executar todos em segundo plano (Headless)**
+**[2] Executar todos em segundo plano (Headless)**
   → Executa todos os testes sem abrir o navegador.
-
-* **[3] Executar todos simultaneamente (Pabot)**
+**[3] Executar todos simultaneamente (Pabot)**
   → Roda todos os testes em paralelo, economizando tempo.
-
-* **[4] Executar teste específico (UI)**
+**[4] Executar teste específico (UI)**
   → Exibe um novo submenu para escolher o sistema desejado (Portais, Autorizadores, etc).
-
-* **[5] Executar teste específico (Headless)**
+**[5] Executar teste específico (Headless)**
   → Mesmo submenu, porém rodando os testes sem abrir navegador.
 
 ---
