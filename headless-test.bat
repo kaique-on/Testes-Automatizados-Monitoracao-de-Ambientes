@@ -43,7 +43,7 @@ echo.
 echo ✅ Testes headless finalizados com sucesso.
 echo.
 echo ===================================================
-echo 🕒 Tempo TOTAL de execução:
+echo 🕒 Tempo TOTAL de execução de todos os testes:
 echo 🕒 !min!m !sec!s
 echo ===================================================
 echo.

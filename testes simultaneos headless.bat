@@ -92,7 +92,7 @@ if exist "%LOGS_DIR%\*.log" (
 :: ================================================
 echo.
 echo ===================================================
-echo Tempo TOTAL de execução:
+echo Tempo TOTAL de execução de todos os testes:
 echo 🕒 !min!m !sec!s
 echo ===================================================
 echo.

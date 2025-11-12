@@ -1,11 +1,11 @@
 *** Settings ***
 Library         OperatingSystem
 Library         String
-# Adicione Collections se você usar Split String ou Get From List
+
 
 *** Keywords ***
 Get Log File Path  
-    [Documentation]    Cria um nome de arquivo de log seguro baseado no nome da suite.
+    
     
     ${base_name}=    Set Variable    ${SUITE NAME}
     
