@@ -21,13 +21,6 @@ Aceitar Cookies
         Fail    Falha ao clicar em "Aceitar Cookies"
     END
 
-Executar com verificacao
-    [Arguments]    ${keyword}    ${mensagem_erro}    @{args}
-    ${ok}=    Run Keyword And Return Status    ${keyword}    @{args}
-    IF    not ${ok}
-        Fail    ${mensagem_erro}
-    END
-
 Login Autorizador Geral
     Executar com verificacao    Wait Until Element Is Visible    Falha ao carregar tela de login (GERAL)    css=input[name='ctl00$bodyHolder$txtUsername']    10s
     Executar com verificacao    Input Text    Falha ao preencher campo de usuário (GERAL)    css=input[name='ctl00$bodyHolder$txtUsername']    ${LOGIN_GERAL}
@@ -66,13 +59,12 @@ Programa da Industria - CPF
     Executar com verificacao    Input Password    Falha ao preencher EAN    id=txtEan1    ${EAN_BF}
     Executar com verificacao    Click Element    Falha ao clicar no campo de cartão    id=ctl00_bodyHolder_lblcartao
 
-    ${close_existe}=    Run Keyword And Return Status    Wait Until Element Is Visible    css=button.close.col-md-4.col-12    3s
+    ${close_existe}=    Run Keyword And Return Status    Wait Until Element Is Visible    css=button.close.col-md-4.col-12    10s
     IF    ${close_existe}
         Executar com verificacao    Click Button    Falha ao clicar no botão de fechar modal    css=button.close.col-md-4.col-12
     END
-
-    ${today_date}=    Get Current Date    result_format=%d/%m/%Y
     Executar com verificacao    Input Text    Falha ao preencher quantidade vendida    id=txtQtdvend1    ${QUANTIDADE}
+    ${today_date}=    Get Current Date    result_format=%d/%m/%Y
     Executar com verificacao    Input Text    Falha ao preencher data da receita    id=txtdtReceita1    ${today_date}
     Executar com verificacao    Select From List By Value    Falha ao selecionar UF    id=ddlUF1    SP
     Executar com verificacao    Input Text    Falha ao preencher CRM    id=txtcrm1    ${CRM}
@@ -117,15 +109,14 @@ Convenio Empresa - Cartao
     END
     Executar com verificacao    Input Password    Falha ao preencher EAN    id=txtEan1    ${EAN_BF}
     Executar com verificacao    Click Element    Falha ao clicar no campo de cartão    id=ctl00_bodyHolder_lblcartao
-    ${today_date}=    Get Current Date    result_format=%d/%m/%Y
     Executar com verificacao    Input Text    Falha ao preencher quantidade vendida    id=txtQtdvend1    ${QUANTIDADE}
+    ${today_date}=    Get Current Date    result_format=%d/%m/%Y
     Executar com verificacao    Input Text    Falha ao preencher data da receita    id=txtdtReceita1    ${today_date}
     Executar com verificacao    Select From List By Value    Falha ao selecionar UF    id=ddlUF1    SP
     Executar com verificacao    Input Password    Falha ao preencher CRM    id=txtcrm1    ${CRM}
     Executar com verificacao    Click Button    Falha ao confirmar compra    id=ctl00_bodyHolder_btnConfirmarCompra
     Executar com verificacao    Wait Until Element Is Visible    Botão final não apareceu após confirmar compra    id=ctl00_bodyHolder_Button1    10s
     Executar com verificacao    Click Button    Falha ao clicar no botão final    id=ctl00_bodyHolder_Button1
-
 
 Logoff
     Execute JavaScript    document.querySelector('#signOut').click();

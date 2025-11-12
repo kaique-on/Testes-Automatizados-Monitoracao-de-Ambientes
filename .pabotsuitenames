@@ -1,9 +1,0 @@
-datasources:b19f1e711872b8c0989a51f15f79077d02d93352
-commandlineoptions:588b38018620b78224fe989117a76b8b118f045f
-suitesfrom:no-suites-from-option
-file:743e04547bdd69b3e1a4b883ec598b1a851d8068
---suite Robot.02 Portais e Sistemas Gestores.Portais-Sistemas
---suite Robot.03 Autorizadores.3-Autorizadores
---suite Robot.08 Acesso ao FuncionalPlant.8-Funcionalplant
---suite Robot.10 Cadastro de Programas.10-Prog-Cad
---suite Robot.11 Webview.11-Webview

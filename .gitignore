@@ -2,3 +2,8 @@
 env/
 .vscode
 results/
+log.html
+report.html
+.pabotsuitenames
+saida_console_pabot
+interactive_console_output.xml

@@ -4,7 +4,7 @@ Library    Collections
 Resource    ../geral-resource.robot
 Resource    ../env/2-env.robot
 Resource    ../logs_utils.robot
-
+ 
 *** Variables ***
 ${ACEITAR_COOKIES}    Aceitar todos os cookies
 ${URL1}    https://funcionalhealthtech.com.br/
@@ -31,89 +31,73 @@ ${URL21}    https://abbott-nutricional.funcionalmais.com/
 ${URL22}    https://astellas.funcionalmais.com/
 ${URL23}    https://knight.funcionalmais.com
 ${URL24}    https://boehringer.funcionalmais.com/
-
-@{URLS2}    ${URL9}    ${URL10}    ${URL12}    ${URL17}    ${URL20}
-
-    # Ordem geral das URLs (todas, na sequência que você quiser validar)
-
-
+ 
 *** Keywords ***
-
-Abrir Navegador
-    Open Browser    about:blank    chrome    options=${OPTIONS}
+ 
 Validar Pagina - https://funcionalhealthtech.com.br/
-    Go To    ${URL1}
-    ${status}=    Run Keyword And Return Status    Wait Until Page Contains    ${ACEITAR_COOKIES}    10s
-    Run Keyword If    ${status}    Log To Shared File    ✅ ${URL1} carregou corretamente
-    ...    ELSE    Log To Shared File    ❌ ${URL1} Erro ao carregar 
-
+    Executar com verificacao    Go To    ❌ Erro ao acessar ${URL1}    ${URL1}
+    Executar com verificacao    Wait Until Element Is Visible    ❌ Erro ao validar ${URL1}    css:.funcional-menu-widget    10s
+    Log To Shared File    ✅ ${URL1} logou corretamente
+ 
 Validar Pagina - https://funcionalacesso.com/Welcome.aspx
-    Go To    ${URL2}
-    ${status}=    Run Keyword And Return Status    Wait Until Page Contains    ${ACEITAR_COOKIES}    10s
-    Run Keyword If    ${status}    Log To Shared File    ✅ ${URL2} carregou corretamente
-    ...    ELSE    Log To Shared File    ❌ ${URL2} Erro ao carregar 
-
+    Executar com verificacao    Go To    ❌ Erro ao acessar ${URL2}    ${URL2}
+    Executar com verificacao    Wait Until Page Contains    ❌ Erro ao validar ${URL2}    ${ACEITAR_COOKIES}    10s
+    Log To Shared File    ✅ ${URL2} logou corretamente
+ 
 Validar Pagina - http://www.funcionalcorp.com.br/funcionalcard/
-    Go To    ${URL3}
-    ${status}=    Run Keyword And Return Status    Wait Until Page Contains    todos    10s
-    Run Keyword If    ${status}    Log To Shared File    ✅ ${URL3} carregou corretamente
-    ...    ELSE    Log To Shared File    ❌ ${URL3} Erro ao carregar 
-
+    Executar com verificacao    Go To    ❌ Erro ao acessar ${URL3}    ${URL3}
+    Executar com verificacao    Wait Until Element Is Visible    ❌ Erro ao validar ${URL3}    css:.funcional-menu-widget    10s
+    Log To Shared File    ✅ ${URL3} logou corretamente
+ 
 Validar Pagina - https://www.funcionalcorp.com.br/funcionalcard/home/
-    Go To    ${URL4}
-    ${status}=    Run Keyword And Return Status    Wait Until Page Contains    faça seu login    10s
-    Run Keyword If    ${status}    Log To Shared File    ✅ ${URL4} carregou corretamente
-    ...    ELSE    Log To Shared File    ❌ ${URL4} Erro ao carregar 
-
+    Executar com verificacao    Go To    ❌ Erro ao acessar ${URL4}    ${URL4}
+    Executar com verificacao    Wait Until Element Is Visible    ❌ Erro ao validar ${URL4}    css:.funcional-menu-widget    10s
+    Log To Shared File    ✅ ${URL4} logou corretamente
+ 
 Validar Pagina - http://dcintranet/ATC/Chamados/Login.aspx
-    Go To    ${URL5}
-    ${status}=    Run Keyword And Return Status    Wait Until Page Contains    Digite os carateres da imagem    10s
-    Run Keyword If    ${status}    Log To Shared File    ✅ ${URL5} carregou corretamente
-    ...    ELSE    Log To Shared File    ❌ ${URL5} Erro ao carregar 
-
-
+    Executar com verificacao    Go To    ❌ Erro ao acessar ${URL5}    ${URL5}
+    Executar com verificacao    Wait Until Page Contains    ❌ Erro ao validar ${URL5}    Digite os carateres da imagem    10s
+    Log To Shared File    ✅ ${URL5} logou corretamente
+ 
 Validar Pagina FuncionalMais
     [Arguments]    ${url}
+    Executar com verificacao    Execute JavaScript    ❌ Erro ao acessar ${url}    window.location.href = "${url}"
     Sleep    1s
-    Execute JavaScript    window.location.href = "${url}"
+ 
+    ${aceitar_existe}=    Run Keyword And Return Status    Element Should Be Visible    css=#onetrust-accept-btn-handler    10s
+    Run Keyword If    ${aceitar_existe}    Click Element    css=#onetrust-accept-btn-handler
+ 
+    Executar com verificacao    Input Text    ❌ Erro ao inserir login em ${url}    id=txtLogin    ${LOGIN}
+    Executar com verificacao    Input Password    ❌ Erro ao inserir senha em ${url}    id=txtSenha    ${SENHA}
+    Executar com verificacao    Click Element    ❌ Erro ao clicar em Entrar em ${url}    id=btnLogin
     Sleep    1s
-    Click Element    css=#onetrust-accept-btn-handler
-
-    # Verificação simples: 
-    # Wait Until Element Is Visible     css=#onetrust-accept-btn-handler
-
-    Input Text    id=txtLogin    ${LOGIN}
-    Input Password    id=txtSenha    ${SENHA}
-    Click Element    id=btnLogin
-    Sleep    1s
+ 
     ${modal_existe}=    Run Keyword And Return Status    Element Should Be Visible    css=#decisionModal .btn.btn-success    10s
     Run Keyword If    ${modal_existe}    Execute JavaScript    document.querySelector('#decisionModal .btn.btn-success').click()
-
+ 
     Login funcionalmais
     Log To Shared File    ✅ ${url} logou corretamente
-
-
+ 
 Login funcionalmais
     ${carregando}=    Run Keyword And Return Status    Element Should Be Visible    css=#loadingModal
     WHILE    ${carregando}
         Sleep    0.5s
         ${carregando}=    Run Keyword And Return Status    Element Should Be Visible    css=#loadingModal
     END
-
+ 
     ${cpf_visivel}=    Run Keyword And Return Status    Element Should Be Visible    id=txtUserCPF
     IF    ${cpf_visivel}
-        # Login funcionalmais2
+        Login funcionalmais2
         No Operation
     ELSE
         Wait Until Element Is Visible    css=#div-menu-sair
         Click Element    css=#div-menu-sair
     END
-
-
+ 
 Login funcionalmais2
-    Input Text    id=txtUserCPF    491081568676
+    Input Text    id=txtUserCPF    49108156867
     Click Element    id=btnEnviar
-
+ 
 Validar Paginas FuncionalMais
     ${todas_urls}=    Create List
     ...    ${URL6}
@@ -135,11 +119,11 @@ Validar Paginas FuncionalMais
     ...    ${URL22}
     ...    ${URL23}
     ...    ${URL24}
-
+ 
     FOR    ${url}    IN    @{todas_urls}
         TRY
             Validar Pagina FuncionalMais    ${url}
         EXCEPT
-            Log To Shared File    ❌ Erro ao validar: ${url}
+            Log To Shared File    ❌ Erro ao validar ${url}
         END
     END

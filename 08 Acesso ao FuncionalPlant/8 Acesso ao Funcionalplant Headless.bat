@@ -13,14 +13,12 @@ cd /d "%~dp0"
 
 del /q output.xml log.html report.html 2>nul
 
-echo ===========================================================
-echo Executando testes em modo HEADLESS...
-echo Pasta atual: %CD%
-echo ===========================================================
+echo Executando testes em segundo plano (HEADLESS)...
 echo.
 
 robot --console NONE --output NONE --log NONE --report NONE -v OPTIONS:"add_argument(\"--headless\");" .
 
-echo ✅ Teste headless finalizados com sucesso.
+echo.
+echo ✅ Teste headless finalizado com sucesso.
 echo.
 pause

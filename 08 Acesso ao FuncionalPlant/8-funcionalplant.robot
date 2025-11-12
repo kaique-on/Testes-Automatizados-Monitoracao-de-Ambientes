@@ -3,20 +3,16 @@ Library    SeleniumLibrary
 Resource    ../geral-resource.robot
 Resource    ../env/8-env.robot
 Resource    ../logs_utils.robot
+Suite Setup    Marcar Inicio
+Suite Teardown    Mostrar Duracao
 
 *** Variables ***
 ${URL}    http://funcionalplant.funcional.local/
 
 *** Keywords ***
-Executar com verificacao
-    [Arguments]    ${keyword}    ${mensagem_erro}    @{args}
-    ${ok}=    Run Keyword And Return Status    ${keyword}    @{args}
-    IF    not ${ok}
-        Fail    ❌ ${mensagem_erro}
-    END
 
 Acessar funcionalplant
-    Open Browser    ${URL}    ${URL}    ${BROWSER}    options=${OPTIONS}
+    Open Browser    ${URL}    ${BROWSER}    options=${OPTIONS}
     Executar com verificacao    Wait Until Element Is Visible    Campo de login não encontrado na página inicial    id=login    10s
     Log To Shared File    ✅ Funcionalplant carregado com sucesso
 
@@ -35,4 +31,4 @@ Acesso e Login em funcionalplant
     Log To Shared File    Link: ${URL}\n
     Acessar funcionalplant
     Login funcionalplant
-    [Teardown]    Close Browser
+    Close Browser

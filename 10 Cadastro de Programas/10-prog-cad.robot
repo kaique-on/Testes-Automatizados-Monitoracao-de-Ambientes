@@ -10,6 +10,15 @@ Suite Teardown    Mostrar Duracao
 *** Variables ***
 ${URL}       https://portaloperacoes.funcionalcorp.net.br/Programa
 
+*** Keywords ***
+Validar Data Recente
+    [Arguments]    ${programa}    ${data_texto}    ${hoje}
+    ${data_somente}=    Evaluate    '${data_texto}'.split()[0]
+    ${data_formatada}=  Convert Date    ${data_somente}    result_format=%Y-%m-%d    date_format=%d/%m/%Y
+    ${diferenca}=       Evaluate    (datetime.datetime.strptime("${hoje}", "%Y-%m-%d") - datetime.datetime.strptime("${data_formatada}", "%Y-%m-%d")).days    datetime
+    Run Keyword If    ${diferenca} > 3    Log To Shared File    ❌ ${programa} está com data antiga (${data_texto})
+    # Run Keyword If    ${diferenca} <= 3    Log To Shared File    ✅ ${programa} está dentro do prazo (${data_texto})
+
 *** Test Cases ***
 Validar Datas de Cadastros Recentes
     Log To Shared File    Executando teste: 10 - Cadastro de Programas
@@ -34,13 +43,3 @@ Validar Datas de Cadastros Recentes
     END
     
     [Teardown]    Close Browser
-
-
-*** Keywords ***
-Validar Data Recente
-    [Arguments]    ${programa}    ${data_texto}    ${hoje}
-    ${data_somente}=    Evaluate    '${data_texto}'.split()[0]
-    ${data_formatada}=  Convert Date    ${data_somente}    result_format=%Y-%m-%d    date_format=%d/%m/%Y
-    ${diferenca}=       Evaluate    (datetime.datetime.strptime("${hoje}", "%Y-%m-%d") - datetime.datetime.strptime("${data_formatada}", "%Y-%m-%d")).days    datetime
-    Run Keyword If    ${diferenca} > 3    Log To Shared File    ❌ ${programa} está com data antiga (${data_texto})
-    # Run Keyword If    ${diferenca} <= 3    Log To Shared File    ✅ ${programa} está dentro do prazo (${data_texto})

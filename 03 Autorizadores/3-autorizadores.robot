@@ -30,9 +30,9 @@ Autorizador Geral
         END
         TRY
             Convenio Empresa - Cartao
-            Log To Shared File    ✅ GERAL - Convenio Empresa por Cartão: OK
+            Log To Shared File    ✅ GERAL - Convênio Empresa por Cartão: OK
         EXCEPT    AS    ${erro}
-            Log To Shared File    ❌ GERAL - Convenio Empresa por Cartão: FALHOU
+            Log To Shared File    ❌ GERAL - Convênio Empresa por Cartão: FALHOU
             Log To Shared File    ❗ ERRO: ${erro}
         END
     
@@ -61,9 +61,9 @@ Autorizador Raiadrogasil
         END
         TRY
             Convenio Empresa - Cartao
-            Log To Shared File    ✅ RAIADROGASIL - Convenio Empresa por Cartão: OK
+            Log To Shared File    ✅ RAIADROGASIL - Convênio Empresa por Cartão: OK
         EXCEPT    AS    ${erro}
-            Log To Shared File    ❌ RAIADROGASIL - Convenio Empresa por Cartão: FALHOU
+            Log To Shared File    ❌ RAIADROGASIL - Convênio Empresa por Cartão: FALHOU
             Log To Shared File    ❗ ERRO: ${erro}
         END
     
@@ -92,9 +92,9 @@ Autorizador Panvel
         END
         TRY
             Convenio Empresa - Cartao
-            Log To Shared File    ✅ PANVEL - Convenio Empresa por Cartão: OK
+            Log To Shared File    ✅ PANVEL - Convênio Empresa por Cartão: OK
         EXCEPT    AS    ${erro}
-            Log To Shared File    ❌ PANVEL - Convenio Empresa por Cartão: FALHOU
+            Log To Shared File    ❌ PANVEL - Convênio Empresa por Cartão: FALHOU
             Log To Shared File    ❗ ERRO: ${erro}
         END
     EXCEPT    AS    ${erro}

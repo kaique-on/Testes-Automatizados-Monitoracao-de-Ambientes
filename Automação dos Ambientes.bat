@@ -9,6 +9,7 @@ color 0F
 chcp 65001 >nul
 
 set "BASE_DIR=%~dp0"
+set "STRUCTURES_DIR=%BASE_DIR%structures"
 
 :MENU
 cls
@@ -20,9 +21,10 @@ echo Como você gostaria de executar os testes?
 echo.
 echo   [1] Executar todos visualmente (UI)
 echo   [2] Executar todos em segundo plano (Headless)
-echo   [3] Executar todos simultaneamente (Headless)
+echo   [3] Executar todos simultaneamente (Headless / Pabot)
 echo   [4] Executar teste específico visualmente (UI)
 echo   [5] Executar teste específico em segundo plano (Headless)
+echo   [0] Sair
 echo.
 set /p opcao=Digite o número da opção desejada: 
 echo.
@@ -59,17 +61,17 @@ goto :MENU
 
 :PABOT
 cls
-echo Executando TODOS os testes simultaneamente (Pabot Headless)...
-echo.
 call "%BASE_DIR%testes simultaneos headless.bat"
 pause
 goto :MENU
+
 
 :SAIR
 cls
 echo Encerrando a monitoração de ambientes...
 timeout /t 1 >nul
 exit /b
+
 
 :UI_ESPECIFICO
 cls
@@ -85,14 +87,16 @@ echo.
 set /p teste=Digite o número do teste desejado: 
 echo.
 
-
-
 if "%teste%"=="1" call "%BASE_DIR%02 Portais e Sistemas Gestores\2 Portais e Sistemas Gestores UI.bat"
 if "%teste%"=="2" call "%BASE_DIR%03 Autorizadores\3 Autorizadores Funcionalcard UI.bat"
 if "%teste%"=="3" call "%BASE_DIR%08 Acesso ao FuncionalPlant\8 Acesso ao Funcionalplant UI.bat"
 if "%teste%"=="4" call "%BASE_DIR%10 Cadastro de Programas\10 Cadastro de Programas UI.bat"
 if "%teste%"=="5" call "%BASE_DIR%11 Webview\11 Webview UI.bat"
 if "%teste%"=="0" goto :MENU
+
+pause
+goto :MENU
+
 
 :HEADLESS_ESPECIFICO
 cls
