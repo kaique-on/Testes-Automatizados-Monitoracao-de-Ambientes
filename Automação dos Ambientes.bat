@@ -1,4 +1,5 @@
 @echo off
+chcp 65001 >nul
 if not defined WT_SESSION (
     start wt.exe -w 0 -p "Windows PowerShell" cmd /c "%~f0"
     exit /b
@@ -6,7 +7,6 @@ if not defined WT_SESSION (
 
 title Monitoração de Ambientes Automatizados
 color 0F
-chcp 65001 >nul
 
 set "BASE_DIR=%~dp0"
 set "STRUCTURES_DIR=%BASE_DIR%structures"
