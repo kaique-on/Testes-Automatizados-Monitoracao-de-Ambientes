@@ -40,6 +40,7 @@ Executar Keyword
     EXCEPT    AS    ${erro}
         Log To Shared File    ❌ ${erro_msg}
         Log To Shared File    ❗ ERRO: ${erro}
+        Fail    ${erro_msg}
     END
 
 Marcar Inicio
