@@ -111,9 +111,9 @@ Ao abrir o arquivo `Automação dos Ambientes.bat`, o sistema exibirá um menu c
 
 Como você gostaria de executar os testes?
 
-  [1] Executar todos visualmente (UI)
-  [2] Executar todos em segundo plano (Headless)
-  [3] Executar todos simultaneamente (Headless / Pabot)
+  [1] Executar todos simultaneamente (Headless / Pabot)
+  [2] Executar todos visualmente (UI)
+  [3] Executar todos em segundo plano (Headless)
   [4] Executar teste específico visualmente (UI)
   [5] Executar teste específico em segundo plano (Headless)
   [0] Sair
@@ -121,14 +121,14 @@ Como você gostaria de executar os testes?
 
 ### 🔹 Opções disponíveis:
 
-* **[1] Executar todos visualmente (UI)**  
+* **[1] Executar todos simultaneamente (Pabot)**  
+→ Roda todos os testes em paralelo, economizando tempo.
+
+* **[2] Executar todos visualmente (UI)**  
 → Abre o navegador e executa todos os testes com interface.
 
-* **[2] Executar todos em segundo plano (Headless)**  
+* **[3] Executar todos em segundo plano (Headless)**  
 → Executa todos os testes sem abrir o navegador.
-
-* **[3] Executar todos simultaneamente (Pabot)**  
-→ Roda todos os testes em paralelo, economizando tempo.
 
 * **[4] Executar teste específico (UI)**  
 → Exibe um novo submenu para escolher o sistema desejado (Portais, Autorizadores, etc).
