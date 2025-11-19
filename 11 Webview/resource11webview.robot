@@ -10,7 +10,7 @@ ${URL_TESTAR_TOKEN}    https://beneficiario.funcionalhealthtech.com.br/?token=
 
 *** Keywords ***
 Acessar JWT Generator
-    Executar com verificacao    Open Browser    Erro ao acessar JWT Generator    ${URL_CRIAR_TOKEN}    ${BROWSER}    options=${OPTIONS}    
+    Open Browser    ${URL_CRIAR_TOKEN}    ${BROWSER}    options=${OPTIONS}    
 
 Inserir código de cartão
     Executar com verificacao    Wait Until Element Is Visible    Campo de código do cartão não encontrado    css=input[name='profileIdentity']    10s
