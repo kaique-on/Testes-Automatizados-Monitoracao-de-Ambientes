@@ -83,7 +83,7 @@ set /p teste=Digite o número do teste desejado:
 echo.
 
 if "%teste%"=="1" call "%BASE_DIR%02 Portais e Sistemas Gestores\2 Portais e Sistemas Gestores UI.bat"
-if "%teste%"=="2" call "%BASE_DIR%03 Autorizadores\3 Autorizadores Funcionalcard UI.bat"
+if "%teste%"=="2" call "%BASE_DIR%03 Autorizadores\3 Autorizadores UI.bat"
 if "%teste%"=="3" call "%BASE_DIR%08 Acesso ao FuncionalPlant\8 Acesso ao Funcionalplant UI.bat"
 if "%teste%"=="4" call "%BASE_DIR%10 Cadastro de Programas\10 Cadastro de Programas UI.bat"
 if "%teste%"=="5" call "%BASE_DIR%11 Webview\11 Webview UI.bat"
@@ -108,7 +108,7 @@ set /p teste=Digite o número do teste desejado:
 echo.
 
 if "%teste%"=="1" call "%BASE_DIR%02 Portais e Sistemas Gestores\2 Portais e Sistemas Gestores headless.bat"
-if "%teste%"=="2" call "%BASE_DIR%03 Autorizadores\3 Autorizadores Funcionalcard headless.bat"
+if "%teste%"=="2" call "%BASE_DIR%03 Autorizadores\3 Autorizadores headless.bat"
 if "%teste%"=="3" call "%BASE_DIR%08 Acesso ao FuncionalPlant\8 Acesso ao Funcionalplant headless.bat"
 if "%teste%"=="4" call "%BASE_DIR%10 Cadastro de Programas\10 Cadastro de Programas headless.bat"
 if "%teste%"=="5" call "%BASE_DIR%11 Webview\11 Webview headless.bat"

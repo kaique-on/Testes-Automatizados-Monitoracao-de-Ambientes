@@ -54,7 +54,8 @@ for /f "tokens=1-4 delims=:.," %%a in ("%time%") do (
 :: EXECUÇÃO DOS TESTES COM PABOT
 :: ================================================
 
-pabot --processes %PROCESSES% -v OPTIONS:"add_argument(\"--headless\");" --consolecolors on --outputdir "%RESULTS_DIR%" . > "%CONSOLE_LOG%"
+:: pabot --processes %PROCESSES%  --consolecolors on --outputdir "%RESULTS_DIR%" . > "%CONSOLE_LOG%"
+pabot --testlevelsplit --processes %PROCESSES% -v OPTIONS:"add_argument(\"--headless\");" --consolecolors on --outputdir "%RESULTS_DIR%" . > "%CONSOLE_LOG%"
 
 :: ================================================
 :: CAPTURA HORA DE FIM E CALCULA DURAÇÃO

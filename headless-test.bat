@@ -21,17 +21,20 @@ echo ===================================================
 echo.
 
 :: --- Marca o início da execução ---
-for /f "tokens=1-4 delims=:.," %%a in ("%time%") do (
-    set /a "startSec=%%a*3600 + %%b*60 + %%c"
+set "t=%time: =0%"
+for /f "tokens=1-3 delims=:,." %%a in ("%t%") do (
+    set /a startSec=%%a*3600 + %%b*60 + %%c
 )
 
 :: --- Execução dos testes ---
 robot --console NONE --output NONE --log NONE --report NONE -v OPTIONS:"add_argument(\"--headless\");" .
 
 :: --- Marca o fim e calcula duração ---
-for /f "tokens=1-4 delims=:.," %%a in ("%time%") do (
-    set /a "endSec=%%a*3600 + %%b*60 + %%c"
+set "t=%time: =0%"
+for /f "tokens=1-3 delims=:,." %%a in ("%t%") do (
+    set /a endSec=%%a*3600 + %%b*60 + %%c
 )
+
 
 set /a totalSec=endSec-startSec
 if !totalSec! lss 0 set /a totalSec+=86400

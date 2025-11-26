@@ -18,7 +18,10 @@ Portais e Sistemas Gestores
     Executar Keyword    Validar Pagina - http://www.funcionalcorp.com.br/funcionalcard/    Erro ao validar Funcional Card
     Executar Keyword    Validar Pagina - https://www.funcionalcorp.com.br/funcionalcard/home/    Erro ao validar portal Funcional Card Home
     Executar Keyword    Validar Pagina - http://dcintranet/ATC/Chamados/Login.aspx    Erro ao validar DC Intranet
+
+    Close Browser
  
 Paginas FuncionalMais
+    Open Browser    about:blank    chrome    options=${OPTIONS}
     Validar Paginas FuncionalMais
     Close Browser
